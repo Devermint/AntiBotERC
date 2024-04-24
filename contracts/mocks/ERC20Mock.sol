@@ -46,7 +46,7 @@ contract ERC20Mock is ERC20, Ownable, TransactionThrottler {
     }
 
     function setBridge(address bridge) public onlyOwner {
-        require(bridge != address(0), "DelegatedMintBurnToken: delegate is the zero address");
+        require(bridge != address(0), "bridge cannot be the zero address");
         _bridge = bridge;
     }
 
