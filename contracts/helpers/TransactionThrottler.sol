@@ -32,7 +32,7 @@ contract TransactionThrottler is Ownable {
     }
 
     function setTradingStart(uint256 _time) external onlyOwner() {
-        require(_tradingStart > block.timestamp, "Protection: To late");
+        require(_time > block.timestamp, "Protection: To late");
         _tradingStart = _time;
         emit TradingTimeChanged(_tradingStart);
     }
