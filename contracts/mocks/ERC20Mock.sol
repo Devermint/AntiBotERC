@@ -14,8 +14,9 @@ contract ERC20Mock is ERC20, Ownable, TransactionThrottler {
         string memory name,
         string memory symbol,
         uint8 decimals_,
-        uint256 supply
-    ) ERC20(name, symbol) {
+        uint256 supply,
+        uint256 tradingStart_
+    ) ERC20(name, symbol) TransactionThrottler(tradingStart_) {
         _decimals = decimals_;
         _mint(msg.sender, supply);
     }

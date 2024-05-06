@@ -19,11 +19,14 @@ contract TransactionThrottler is Ownable {
     event MarkedWhitelisted(address indexed account, bool isWhitelisted);
     event MarkedUnthrottled(address indexed account, bool isUnthrottled);
 
+    constructor(uint256 tradingStart_) {
+        _tradingStart = tradingStart_;
+    }
+
     function initAntibot() external onlyOwner() {
         require(!_initlialized, "Protection: Already initialized");
         _initlialized = true;
         _isUnthrottled[owner] = true;
-        _tradingStart = 1655119721;
         _restrictionActive = true;
         emit InitializedAntibot(true);
     }
